@@ -18,7 +18,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="2-1.h">
+    <ClInclude Include="2\2-0.h">
       <Filter>2</Filter>
     </ClInclude>
   </ItemGroup>
