@@ -21,5 +21,8 @@
     <ClInclude Include="2\2-0.h">
       <Filter>2</Filter>
     </ClInclude>
+    <ClInclude Include="2\2-1.h">
+      <Filter>2</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
