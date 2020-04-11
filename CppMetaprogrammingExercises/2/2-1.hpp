@@ -40,7 +40,7 @@ struct replace_type<typename add_T_function_pointer_T<T>::type, T, Y>
 
 void test2_1()
 {
-	static_assert(std::is_same_v<int*, replace_type<void*, void, int>::type>);
-	static_assert(std::is_same_v<long*[10], replace_type<const int*[10], const int, long>::type>);
-	static_assert(std::is_same_v<long& (*)(long&), replace_type<char& (*)(char&), char&, long&>::type>);
+	static_assert(std::is_same_v<int*, replace_type<void*, void, int>::type>);//success
+	static_assert(std::is_same_v<long*[10], replace_type<const int*[10], const int, long>::type>);//success
+	static_assert(std::is_same_v<long& (*)(long&), replace_type<char& (*)(char&), char&, long&>::type>);//success
 }

@@ -18,13 +18,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="2\2-0.h">
+    <ClInclude Include="2\2-0.hpp">
       <Filter>2</Filter>
     </ClInclude>
-    <ClInclude Include="2\2-1.h">
+    <ClInclude Include="2\2-1.hpp">
       <Filter>2</Filter>
     </ClInclude>
-    <ClInclude Include="2\2-2.h">
+    <ClInclude Include="2\2-2.hpp">
       <Filter>2</Filter>
     </ClInclude>
   </ItemGroup>
