@@ -1,7 +1,8 @@
 #pragma once
 #include <type_traits>
+#include "3-3.hpp"
 
-//implementation of placeholders
+//my implementation of placeholders
 template<int N>
 struct arg;
 
@@ -29,7 +30,7 @@ struct arg<2>
 
 using _2 = arg<2>;
 
-//implementation of the lambda metafunction
+//my implementation of the lambda metafunction
 template<template<class T> class F>
 struct fun_wrapper
 {
@@ -39,8 +40,17 @@ struct fun_wrapper
 	};
 };
 
-template<class F>
+template<class F,class = void>
 struct lambda;
+
+template<template<class...Types> class T>
+using void_tt = void;
+
+template<class F>
+struct lambda<F, void_tt<typename F::template apply>>
+{
+	using type = typename F;
+};
 
 template<template<class T> class F>
 struct lambda<F<_1>>
@@ -75,7 +85,11 @@ struct twice_self : twice<twice1, T>
 
 void test3_4()
 {
+	//test lambda;
+	static_assert(std::is_same<int**, twice<lambda<add_pointer_f>::type, int>::type>::value); //success;
 	static_assert(std::is_same<int**, twice<lambda<std::add_pointer<_1>>::type,int>::type>::value); //success;
+
+	//3-4
 	static_assert(std::is_same<int****, twice_self<int>::type>::value);	//success;
 	static_assert(std::is_same<int**, twice_self<int>::type>::value);	//fail;
 }

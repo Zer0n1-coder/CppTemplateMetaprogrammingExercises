@@ -45,5 +45,8 @@
     <ClInclude Include="3\3-2.hpp">
       <Filter>3</Filter>
     </ClInclude>
+    <ClInclude Include="3\3-6.hpp">
+      <Filter>3</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
