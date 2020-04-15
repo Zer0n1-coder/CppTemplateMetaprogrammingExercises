@@ -19,6 +19,9 @@
     <Filter Include="3">
       <UniqueIdentifier>{6d6f667d-a186-499f-a532-486787b885d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="4">
+      <UniqueIdentifier>{9e4576a6-4282-4f21-9351-8d48a3ce63cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2\2-0.hpp">
@@ -47,6 +50,9 @@
     </ClInclude>
     <ClInclude Include="3\3-6.hpp">
       <Filter>3</Filter>
+    </ClInclude>
+    <ClInclude Include="4\4-1.hpp">
+      <Filter>4</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
