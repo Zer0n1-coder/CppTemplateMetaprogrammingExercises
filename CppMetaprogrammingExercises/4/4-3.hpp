@@ -3,18 +3,8 @@
 
 //my implementation of if_ for question1
 template<class Predicate,class T1,class T2>
-struct if_;
-
-template<class T1, class T2>
-struct if_<std::false_type, T1, T2>
+struct if_ : std::conditional<Predicate::value, T1, T2>
 {
-	using type = T2::type;
-};
-
-template<class T1, class T2>
-struct if_<std::true_type, T1, T2>
-{
-	using type = T1::type;
 };
 
 template<class N>
@@ -31,37 +21,32 @@ struct next_if : if_<apply<Predicate,N>, next_<N>,N>
 
 //my implementation of not_equal_to_ for question2
 template<class N1,class N2>
-struct not_equal_to_
+struct not_equal_to_ : bool_constant<!N1::value == N2::value>
 {
-	using type = bool_constant<!N1::value == N2::value>;
 };
 
 //my implementation of minus_ for question2
 template<class N1,class N2>
-struct minus_
+struct minus_ :integral_constant<int, N1::value - N2::value>
 {
-	using type = integral_constant<int, N1::value - N2::value>;
 };
 
 //my implementation of greater_ for question2
 template<class N1, class N2>
-struct greater_
+struct greater_:bool_constant<N1::value > N2::value >
 {
-	using type = bool_constant<N1::value > N2::value>;
 };
 
 //my implementation of plus_ for question2
 template<class N1, class N2>
-struct plus_
+struct plus_:integral_constant<int, N1::value + N2::value>
 {
-	using type = integral_constant<int, N1::value + N2::value>;
 };
 
 //my implementation of multiplies_ for question2
 template<class N1, class N2>
-struct multiplies_
+struct multiplies_:integral_constant<int, N1::value * N2::value>
 {
-	using type = integral_constant<int, N1::value * N2::value>;
 };
 
 //question2

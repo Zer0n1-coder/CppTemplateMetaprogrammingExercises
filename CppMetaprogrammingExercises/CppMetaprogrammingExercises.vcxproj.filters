@@ -63,5 +63,13 @@
     <ClInclude Include="4\4-4.hpp">
       <Filter>4</Filter>
     </ClInclude>
+    <ClInclude Include="4\4-5.hpp">
+      <Filter>4</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
