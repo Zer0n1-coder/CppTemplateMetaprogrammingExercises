@@ -49,20 +49,20 @@ void test4_4()
 		int fun(int){}
 	};
 
-	static_assert(is_data_member_pointer<int*>::value);
-	static_assert(is_data_member_pointer<int A::*>::value);
-	static_assert(is_data_member_pointer<int (A::*)(int)>::value);
+	static_assert(is_data_member_pointer<int*>::value);				//fail
+	static_assert(is_data_member_pointer<int A::*>::value);			//success;
+	static_assert(is_data_member_pointer<int (A::*)(int)>::value);	//fail
 
-	static_assert(is_function_pointer<int*>::value);
-	static_assert(is_function_pointer<int (A::*)(int)>::value);
-	static_assert(is_function_pointer<int (*)(int)>::value);
+	static_assert(is_function_pointer<int*>::value);				//fail
+	static_assert(is_function_pointer<int (A::*)(int)>::value);		//fail
+	static_assert(is_function_pointer<int (*)(int)>::value);		//success;
 
 	using Fun = int(*)(int);
-	static_assert(is_reference_to_function_pointer<Fun&>::value);
-	static_assert(is_reference_to_function_pointer<int&>::value);
+	static_assert(is_reference_to_function_pointer<Fun&>::value);	//success;
+	static_assert(is_reference_to_function_pointer<int&>::value);	//fail
 
-	static_assert(is_reference_to_non_const<Fun&>::value);
-	static_assert(is_reference_to_non_const<int&>::value);
-	static_assert(is_reference_to_non_const<const Fun&>::value);
-	static_assert(is_reference_to_non_const<const int&>::value);
+	static_assert(is_reference_to_non_const<Fun&>::value);			//success;
+	static_assert(is_reference_to_non_const<int&>::value);			//success;
+	static_assert(is_reference_to_non_const<const Fun&>::value);	//fail
+	static_assert(is_reference_to_non_const<const int&>::value);	//fail
 }
