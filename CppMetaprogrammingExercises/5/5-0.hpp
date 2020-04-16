@@ -45,7 +45,7 @@ struct next_;
 template<class Tiny, class Pos>
 struct next_<tiny_iterator<Tiny, Pos>>
 {
-	using type = tiny_iterator<Tiny, next_c<Pos>>;
+	using type = tiny_iterator<Tiny, next_c<Pos>::type>;
 };
 
 template<class Iterator>
@@ -54,7 +54,7 @@ struct prior_;
 template<class Tiny, class Pos>
 struct prior_<tiny_iterator<Tiny, Pos>>
 {
-	using type = tiny_iterator<Tiny, prior_c<Pos>>;
+	using type = tiny_iterator<Tiny, prior_c<Pos>type>;
 };
 
 template<class Tiny,int N>
@@ -157,8 +157,15 @@ void test5_0()
 	static_assert(std::is_same<int_constant<2>, size_<tiny<int,float>>::type>::value);
 	static_assert(std::is_same<int_constant<3>, size_<tiny<int, float,double>>::type>::value);
 
-	static_assert(std::is_same<int, deref<begin_<tiny<int, float, double>>::type>::type>::value);
+	using iter = begin_<tiny<int, float, double>>::type;
+	using iter1 = next_<iter>::type;
+	using iter2 = next_<iter1>::type;
+	static_assert(std::is_same<int, deref<iter>::type>::value);
+	static_assert(std::is_same<float, deref<iter1>::type>::value);
+	static_assert(std::is_same<double, deref<iter2>::type>::value);
+
 	static_assert(std::is_same<int, at_<tiny<int, float, double>,int_constant<0>>::type>::value);
 	static_assert(std::is_same<float, at_<tiny<int, float, double>, int_constant<1>>::type>::value);
 	static_assert(std::is_same<double, at_<tiny<int, float, double>, int_constant<2>>::type>::value);
+	
 }
