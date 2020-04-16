@@ -139,6 +139,7 @@
     <ClInclude Include="4\4-3.hpp" />
     <ClInclude Include="4\4-4.hpp" />
     <ClInclude Include="4\4-5.hpp" />
+    <ClInclude Include="5\5-0.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
