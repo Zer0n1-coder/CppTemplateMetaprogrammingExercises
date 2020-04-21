@@ -72,6 +72,9 @@
     <ClInclude Include="5\5-0.hpp">
       <Filter>5</Filter>
     </ClInclude>
+    <ClInclude Include="5\5-1.hpp">
+      <Filter>5</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

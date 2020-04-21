@@ -150,6 +150,27 @@ struct size_<tiny<T0, T1, T2>> :int_constant<3>
 
 };
 
+template<class Tiny, class value>
+struct tiny_push_back;
+
+template<class value>
+struct tiny_push_back<tiny<none, none, none>, value>
+{
+	using type = tiny<value,none,none>;
+};
+
+template<class T0, class value>
+struct tiny_push_back<tiny<T0, none, none>, value>
+{
+	using type = tiny<T0, value, none>;
+};
+
+template<class T0, class T1, class value>
+struct tiny_push_back<tiny<T0, T1,none>, value>
+{
+	using type = tiny<T0, T1, value>;
+};
+
 void test5_0()
 {
 	static_assert(std::is_same<int_constant<0>,size_<tiny<>>::type>::value);
@@ -168,4 +189,8 @@ void test5_0()
 	static_assert(std::is_same<float, at_<tiny<int, float, double>, int_constant<1>>::type>::value);
 	static_assert(std::is_same<double, at_<tiny<int, float, double>, int_constant<2>>::type>::value);
 	
+	using i2 = int_constant<2>;
+	static_assert(std::is_same<tiny<i2, i2, i2>, tiny_push_back<tiny<i2, i2>, i2>::type>::value);
+	static_assert(std::is_same<tiny<i2, i2>, tiny_push_back<tiny<i2>, i2>::type>::value);
+	static_assert(std::is_same<tiny<i2>, tiny_push_back<tiny<>, i2>::type>::value);
 }
