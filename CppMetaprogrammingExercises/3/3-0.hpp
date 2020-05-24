@@ -29,5 +29,5 @@ struct binary<0>
 void test3_0()
 {
 	constexpr auto test1 = binary<101011010>::value;	//success
-	constexpr auto test1 = binary<9845752>::value;		//fail
+	constexpr auto test2 = binary<9845752>::value;		//fail
 }
