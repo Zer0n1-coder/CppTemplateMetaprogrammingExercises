@@ -8,12 +8,6 @@ struct _add_const_ref
 };
 
 template<class T>
-struct _add_const_ref<true, T>
-{
-	using type = T;
-};
-
-template<class T>
 struct _add_const_ref<false, T>
 {
 	using type = const T&;
